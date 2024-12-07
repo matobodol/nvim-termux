@@ -1,0 +1,28 @@
+local status_ok, lspconfig = pcall(require, 'lspconfig')
+if not status_ok then
+	return
+end
+
+-- SETUP LSP
+require("mason").setup()
+require("mason-lspconfig").setup {
+	ensure_installed = {'bashls', 'pylsp'}
+}
+-- After setting up mason-lspconfig you may set up servers via lspconfig
+-- ...
+
+local servers = {
+	-- install by native
+	"lua_ls",
+	"rust_analyzer",
+
+	-- install by mason
+	"bashls",
+	"pylsp",
+}
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+for _, lsp in ipairs(servers) do
+	lspconfig[lsp].setup {
+		capabilities = capabilities
+	}
+end
