@@ -40,10 +40,10 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Konfirmasi pilihan
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", priority = 1000 }, -- Sumber LSP
-		{ name = "luasnip", priority = 800 },   -- Snippet luasnip
-		{ name = "path", priority = 750 },      -- Penyelesaian path
-		{ name = "buffer", priority = 500 },    -- Penyelesaian buffer
+		{ name = "nvim_lsp" },	-- Sumber LSP
+		{ name = "luasnip" },   -- Snippet luasnip
+		{ name = "path" },      -- Penyelesaian path
+		{ name = "buffer" },    -- Penyelesaian buffer
 	}),
 })
 
