@@ -35,6 +35,10 @@ return {
 		"L3MON4D3/LuaSnip",
 	},
 
+	-- FORMATTING
+  { "jose-elias-alvarez/null-ls.nvim" },
+  { "jayp0521/mason-null-ls.nvim" },
+
 	-- AUTOPAIRS
 	{
 		'windwp/nvim-autopairs',

@@ -3,11 +3,11 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate', -- Menjalankan update treesitter setelah pemasangan
 		config = function()
-			require'nvim-treesitter.configs'.setup {
+			require 'nvim-treesitter.configs'.setup {
 				auto_install = true,
-				ensure_installed = {"lua",}, -- Pasang bahasa yang didukung secara otomatis
+				ensure_installed = { "lua", },      -- Pasang bahasa yang didukung secara otomatis
 				highlight = {
-					enable = true, -- Mengaktifkan syntax highlighting
+					enable = true,                   -- Mengaktifkan syntax highlighting
 					additional_vim_regex_highlighting = false, -- Mematikan regex untuk highlight (opsional)
 				},
 				indent = {
@@ -58,11 +58,11 @@ return {
 				-- show the '~' characters after the end of buffers
 				show_end_of_buffer = true, -- default false
 				-- use transparent background
-				transparent_bg = false,     -- default false
+				transparent_bg = false, -- default false
 				-- set custom lualine background color
 				lualine_bg_color = "#44475a", -- default nil
 				-- set italic comment
-				italic_comment = false,    -- default false
+				italic_comment = false, -- default false
 			})
 
 			-- vim.cmd("colorscheme tokyonight")

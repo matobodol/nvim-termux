@@ -29,12 +29,11 @@ for _, dir in ipairs(subdir) do
     cfg_files = vim.fn.glob(config_root .. '/' .. dir .."/*.lua", true, true)
 
     for _, file in ipairs(cfg_files) do
-        local module_name = file:match(dir .. "/(.+)%.lua$")
-        if module_name then
-            load_module(dir .. '.' .. module_name)
+        local lua_module = file:match(dir .. "/(.+)%.lua$")
+        if lua_module then
+            load_module(dir .. '.' .. lua_module)
         end
     end
 
 end
--- local cfg_files = vim.fn.glob(config_root .. "/cfg/*.lua", true, true)
 
