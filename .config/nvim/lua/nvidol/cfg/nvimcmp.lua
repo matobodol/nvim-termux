@@ -1,4 +1,3 @@
-
 -- Plugin untuk autocompletion
 -- { "hrsh7th/nvim-cmp" },
 -- { "hrsh7th/cmp-nvim-lsp" },
@@ -11,16 +10,12 @@
 -- 	"saadparwaiz1/cmp_luasnip",
 -- 	"L3MON4D3/LuaSnip",
 -- },
---
---
---
---
+
 -- Nvim-CMP Setup
 local status_ok, cmp = pcall(require, "cmp")
 if not status_ok then
 	return
 end
-
 
 cmp.setup({
 	snippet = {
@@ -40,10 +35,10 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Konfirmasi pilihan
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },	-- Sumber LSP
-		{ name = "luasnip" },   -- Snippet luasnip
-		{ name = "path" },      -- Penyelesaian path
-		{ name = "buffer" },    -- Penyelesaian buffer
+		{ name = "nvim_lsp" }, -- Sumber LSP
+		{ name = "luasnip" }, -- Snippet luasnip
+		{ name = "path" }, -- Penyelesaian path
+		{ name = "buffer" }, -- Penyelesaian buffer
 	}),
 })
 
@@ -53,8 +48,8 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" }, -- Path untuk cmdline
 	}, {
-			{ name = "cmdline" }, -- Penyelesaian cmdline
-		}),
+		{ name = "cmdline" }, -- Penyelesaian cmdline
+	}),
 })
 
 -- Pengaturan untuk pencarian (/ atau ?)
