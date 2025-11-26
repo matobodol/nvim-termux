@@ -3,10 +3,13 @@ local ensure_installed = {
 	"pyright",
 	"bashls",
 	-- "lua_ls",
-	-- "rust_analyzer""
+	-- "rust_analyzer"
 }
 -- lsp installed by OS packages manager
-local servers = { "lua_ls" }
+local servers = {
+	"lua_ls",
+	"rust_analyzer",
+}
 
 local M = {
 	-- LSP PLUGINS
@@ -67,15 +70,15 @@ M.config = function()
 		table.insert(servers, v)
 	end
 
-	local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-	if not lspconfig_ok then return end
+	-- local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+	-- if not lspconfig_ok then return end
 
 	-- Integrasi LSP dengan Nvim-CMP
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local capabiliti = require("cmp_nvim_lsp").default_capabilities()
 	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup {
-			capabilities = capabilities,
-		}
+		-- lspconfig[lsp].setup {
+		vim.lsp.config(lsp, { capabilities = capabiliti, })
+		vim.lsp.enable(lsp)
 	end
 end
 
