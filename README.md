@@ -1,2 +1,2 @@
 # nvim-termux
-Konfigurasi termux dan neovim
+termux: dotfile neovim 0.11+
