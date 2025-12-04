@@ -52,7 +52,7 @@ M.config = function()
 			"notify",
 			"toggleterm",
 			"lazyterm",
-			"nvimtree",
+			"NvimTree",
 		},
 		callback = function()
 			vim.b.miniindentscope_disable = true

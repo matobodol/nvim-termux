@@ -54,14 +54,12 @@ M.config = function()
 	require("mason").setup()
 
 	-- Mason-LSPConfig Integration
-
 	require("mason-lspconfig").setup {
 		ensure_installed = ensure_installed,
 		automatic_installation = false,
 	}
 
 	-- LSPConfig
-
 	-- Mengambil daftar server yang telah dipasang via mason
 	local servers_mason = require("mason-lspconfig").get_installed_servers()
 
@@ -70,13 +68,9 @@ M.config = function()
 		table.insert(servers, v)
 	end
 
-	-- local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
-	-- if not lspconfig_ok then return end
-
 	-- Integrasi LSP dengan Nvim-CMP
 	local capabiliti = require("cmp_nvim_lsp").default_capabilities()
 	for _, lsp in ipairs(servers) do
-		-- lspconfig[lsp].setup {
 		vim.lsp.config(lsp, { capabilities = capabiliti, })
 		vim.lsp.enable(lsp)
 	end

@@ -74,3 +74,13 @@ vim.keymap.set({ 'n', 'x' }, 'cv', '"+p')
 
 -- Delete text
 vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
+
+vim.keymap.set(
+	"n",
+	"<Leader>cx",
+	':term cd %:h && RUSTFLAGS="-Awarnings" cargo run',
+	{ noremap = true, silent = false }
+)
+vim.keymap.set("n", "<leader>x", function()
+	require("nvidol.utils.buffrunner").buffrunner()
+end, { desc = "Run current buffer" })
