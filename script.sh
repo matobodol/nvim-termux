@@ -23,7 +23,8 @@ push() {
 	[ $? -eq 0 ] && git commit -m "$commit"
 
 	# Push perubahan ke branch utama
-	[ $? -eq 0 ] && git push "$REPO_URL" $branch
+	[ $? -eq 0 ] && git push
+	# [ $? -eq 0 ] && git push "$REPO_URL" $branch
 
 	if [ $? -eq 0 ]; then
 		echo "push suksess"
