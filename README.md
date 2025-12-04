@@ -1,2 +1,2 @@
 # nvim-termux
-termux: dotfile neovim 0.11+
+termux to IDE neovim 0.11+
