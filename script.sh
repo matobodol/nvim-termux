@@ -1,6 +1,5 @@
 #!/bin/bash
 #install dan push
-# hapus file repo: git rm -r
 
 real_dir="$(realpath $(dirname "$0"))"
 cd $real_dir
