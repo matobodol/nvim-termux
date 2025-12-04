@@ -1,4 +1,6 @@
 #!/bin/bash
+#install dan push
+
 real_dir="$(realpath $(dirname "$0"))"
 cd $real_dir
 # PUSH
