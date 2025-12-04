@@ -10,11 +10,10 @@ return {
 
 			-- SNIPPETS ENGINE
 			{
-				-- for user kuasnip
 				-- "saadparwaiz1/cmp_luasnip",
 				-- "L3MON4D3/LuaSnip",
 
-				-- " For vsnip users.
+				-- For vsnip users.
 				'hrsh7th/cmp-vsnip',
 				'hrsh7th/vim-vsnip',
 			},
@@ -28,8 +27,7 @@ return {
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						-- require("luasnip").lsp_expand(args.body)
-						vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+						vim.fn["vsnip#anonymous"](args.body)       -- For `vsnip` users.
 					end,
 				},
 				window = {
@@ -41,27 +39,27 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Konfirmasi pilihan
+					["<CR>"] = cmp.mapping.confirm({ select = true }),      -- Konfirmasi pilihan
+					-- Keymap <Tab> akan kembali ke default/snippet bawaan vsnip (jika ada)
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" }, -- Sumber LSP
-					-- { name = "luasnip" }, -- Snippet luasnip
-					vsnip = '⋗', --'⋗ ',
-					{ name = "path" }, -- Penyelesaian path
-					{ name = "buffer" }, -- Penyelesaian buffer
+					{ name = "nvim_lsp" },      -- Sumber LSP
+					{ name = "vsnip" },
+					{ name = "path" },          -- Penyelesaian path
+					{ name = "buffer" },        -- Penyelesaian buffer
 				}),
 				formatting = {
 					fields = { "abbr", "kind", "menu" },
 					format = function(entry, vim_item)
 						local menu_icon = {
-							nvim_lsp = 'λ', --'λ ',
-							vsnip = '>', -- For vsnip users.
-							-- luasnip = '⋗', --'⋗ ',
-							buffer = 'Ω', --'Ω ',
-							path = '::', --'Ω ',
+							nvim_lsp = 'λ',
+							vsnip = '>',
+							buffer = 'Ω',
+							path = '::',
 						}
+
 						-- size menu char
-						local ELLIPSIS_CHAR = '~' --'…'
+						local ELLIPSIS_CHAR = '~'
 						local MAX_LABEL_WIDTH = 16
 						local MIN_LABEL_WIDTH = 5
 
@@ -84,9 +82,9 @@ return {
 			cmp.setup.cmdline(":", {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = cmp.config.sources({
-					{ name = "path" }, -- Path untuk cmdline
+					{ name = "path" },
 				}, {
-					{ name = "cmdline" }, -- Penyelesaian cmdline
+					{ name = "cmdline" },
 				}),
 			})
 
@@ -94,7 +92,7 @@ return {
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "buffer" }, -- Penyelesaian dari buffer
+					{ name = "buffer" },
 				},
 			})
 		end,
