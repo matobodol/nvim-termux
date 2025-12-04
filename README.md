@@ -1,2 +1,3 @@
 # nvim-termux
-termux to IDE neovim 0.11+
+**Termux to IDE neovim 0.11+*
+
