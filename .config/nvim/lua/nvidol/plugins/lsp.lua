@@ -34,16 +34,6 @@ M.config = function()
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
-	-- KONFIGURASI TAMPILAN DIAGNOSTIK INLINE (ERROR LENS STYLE)
-	vim.diagnostic.config({
-		virtual_text = true, -- MENGAKTIFKAN TAMPILAN PESAN INLINE
-		-- Konfigurasi jendela floating (pesan detail saat hover/dibuka)
-		float = {
-			source = true,
-			border = "rounded",
-		},
-		update_in_insert = false, -- Jangan update saat di Insert Mode
-	})
 
 
 	-- Keymaps untuk navigasi LSP
@@ -73,5 +63,17 @@ M.config = function()
 		vim.lsp.config(lsp, { capabilities = capabiliti, })
 		vim.lsp.enable(lsp)
 	end
+	--
+	-- KONFIGURASI TAMPILAN DIAGNOSTIK INLINE (ERROR LENS STYLE)
+	vim.diagnostic.config({
+		virtual_text = true, -- MENGAKTIFKAN TAMPILAN PESAN INLINE
+		-- Konfigurasi jendela floating (pesan detail saat hover/dibuka)
+		float = {
+			source = true,
+			border = "rounded",
+		},
+		update_in_insert = false, -- Jangan update saat di Insert Mode
+	})
 end
+
 return M

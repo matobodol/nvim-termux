@@ -37,10 +37,10 @@ return {
 					width = 0.80,
 					height = 0.65,
 					prompt_position = "bottom",
-					-- horizontal = {
-					-- 	mirror = true,
-					-- 	preview_width = 20,
-					-- },
+					horizontal = {
+						mirror = false,
+						preview_width = 20,
+					},
 					vertical = {
 						results_height = 8,
 						mirror = false,
@@ -48,7 +48,8 @@ return {
 					},
 				},
 				previe_cutoff = 0,
-				sorting_strategy = "ascending", -- Item terbaik muncul di atas
+				sorting_strategy = "descending", -- Item terbaik muncul di atas
+				-- sorting_strategy = "ascending", -- Item terbaik muncul di atas
 				generic_sorter = require('telescope.sorters').get_fzy_sorter,
 			},
 

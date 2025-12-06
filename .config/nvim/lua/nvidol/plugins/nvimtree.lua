@@ -2,7 +2,9 @@
 --TREESITTER
 local M = { "nvim-tree/nvim-tree.lua" }
 M.dependencies = { "nvim-tree/nvim-web-devicons", }
+
 M.keys = { { '<leader>e', '<cmd>NvimTreeToggle<cr>' }, }
+
 M.config = function()
 	require('nvim-tree').setup({
 		--root_dirs = {},
