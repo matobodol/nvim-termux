@@ -22,7 +22,7 @@ local function build_run_command(ext, info)
 		},
 
 		sh = {
-			run = "/usr/bin/bash " .. info.full_path,
+			run = "/data/data/com.termux/files/usr/bin/bash " .. info.full_path,
 		},
 
 		lua = {

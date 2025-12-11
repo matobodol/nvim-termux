@@ -11,76 +11,70 @@
 -- x: Visual block mode
 -- t: Terminal mode
 -- c: Command mode
+-- nvidol/core/keymaps.lua
+vim.g.mapleader = " "
 
-vim.g.mapleader = " " -- Mengatur leader key menjadi spasi
-local opts = { noremap = true, silent = true }
+-- Window navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window", noremap = true, silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window", noremap = true, silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to lower window", noremap = true, silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to upper window", noremap = true, silent = true })
 
--- Navigasi antar window
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts) -- Ke window kiri
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts) -- Ke window kanan
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts) -- Ke window bawah
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts) -- Ke window atas
+-- Save / quit
+vim.keymap.set("n", "<C-s>", ":w<CR>", { desc = "Save file", noremap = true, silent = true })
+vim.keymap.set("n", "<C-q>", ":q<CR>", { desc = "Quit file", noremap = true, silent = true })
+vim.keymap.set("n", "<C-a>", ":wa<CR>", { desc = "Save all files", noremap = true, silent = true })
 
--- Menyimpan dan keluar
-vim.keymap.set('n', '<C-s>', ':w<CR>', opts)  -- Simpan file
-vim.keymap.set('n', '<C-q>', ':q<CR>', opts)  -- Keluar
-vim.keymap.set('n', '<C-a>', ':wa<CR>', opts) -- Simpan semua file
+-- Buffer navigation
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { desc = "Close buffer", noremap = true, silent = true })
 
--- Navigasi buffer
-vim.keymap.set('n', '<leader>bn', ':bnext<CR>', opts)     -- Buffer berikutnya
-vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', opts) -- Buffer sebelumnya
-vim.keymap.set('n', '<leader>bc', ':bdelete<CR>', opts)   -- Buffer sebelumnya
+-- Visual indent & move
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and stay in visual", noremap = true, silent = true })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and stay in visual", noremap = true, silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up", noremap = true, silent = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down", noremap = true, silent = true })
 
--- Mode visual: pindah indentasi sambil tetap di visual
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
+-- Normal mode: join without moving cursor
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join line below without moving cursor", noremap = true, silent = true })
 
--- Memindahkan baris di visual mode
-vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv', opts) -- Pindah baris ke atas
-vim.keymap.set('v', 'J', ':m \'>+1<CR>gv=gv', opts) -- Pindah baris ke bawah
+-- Insert mode: escape quickly
+vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode", noremap = true, silent = true })
 
--- Bergabungkan dua baris di normal mode tanpa memindahkan kursor
-vim.keymap.set('n', 'J', 'mzJ`z', opts)
+-- Scroll without moving cursor
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page down", noremap = true, silent = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page up", noremap = true, silent = true })
 
--- Mode insert: keluar cepat
-vim.keymap.set('i', 'jk', '<Esc>', opts)
+-- Search centering
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result centered", noremap = true, silent = true })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>nh", ":nohlsearch<CR>", { desc = "Clear search highlight", noremap = true, silent = true })
 
--- Scroll layar tanpa menggeser kursor
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts) -- Scroll setengah layar ke bawah
-vim.keymap.set('n', '<C-u>', '<C-u>zz', opts) -- Scroll setengah layar ke atas
+-- Terminal
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode", noremap = true, silent = true })
 
--- Pencarian dengan pusat layar
-vim.keymap.set('n', 'n', 'nzzzv', opts)
-vim.keymap.set('n', 'N', 'Nzzzv', opts)
+-- Select all & reindent
+vim.keymap.set("n", "<leader>in", "ggVG=<CR>", { desc = "Reindent entire buffer", noremap = true, silent = true })
+vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<CR>",
+	{ desc = "Select all text in buffer", noremap = true, silent = true })
 
--- hilangkan highlight Pencarian
-vim.keymap.set('n', '<leader>nh', ':nohlsearch<CR>', opts)
+-- Home / End line
+vim.keymap.set({ "n", "x", "o" }, "<leader>h", "^", { desc = "Go to beginning of line" })
+vim.keymap.set({ "n", "x", "o" }, "<leader>l", "g_", { desc = "Go to end of line" })
 
--- Mode terminal
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], opts)
+-- Clipboard
+vim.keymap.set({ "n", "x" }, "cp", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set({ "n", "x" }, "cv", '"+p', { desc = "Paste from system clipboard" })
 
--- select all and indentasi
-vim.keymap.set("n", "<leader>in", "ggVG=<CR>", { desc = "Reindent", silent = true })
-vim.keymap.set('n', '<leader>a', ':keepjumps normal! ggVG<cr>', { desc = "Select all text in buffer", silent = true })
+-- Delete without affecting registers
+vim.keymap.set({ "n", "x" }, "x", '"_x', { desc = "Delete character without affecting register" })
 
--- go to homeline
-vim.keymap.set({ 'n', 'x', 'o' }, '<leader>h', '^')
--- goto endline
-vim.keymap.set({ 'n', 'x', 'o' }, '<leader>l', 'g_')
+-- Run Rust file
+vim.keymap.set("n", "<Leader>cx", ':term cd %:h && RUSTFLAGS="-Awarnings" cargo run',
+	{ desc = "Run Rust file in terminal", noremap = true, silent = false })
 
--- Basic clipboard interaction
-vim.keymap.set({ 'n', 'x' }, 'cp', '"+y')
-vim.keymap.set({ 'n', 'x' }, 'cv', '"+p')
-
--- Delete text
-vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
-
-vim.keymap.set(
-	"n",
-	"<Leader>cx",
-	':term cd %:h && RUSTFLAGS="-Awarnings" cargo run',
-	{ noremap = true, silent = false }
-)
+-- Run current buffer
 vim.keymap.set("n", "<leader>x", function()
 	require("nvidol.utils.buffrunner").buffrunner()
 end, { desc = "Run current buffer" })

@@ -87,6 +87,7 @@ setup_termux() {
 		 wget
 		 rust
 		 rust-analyzer
+		 gh
 	 )
 
 	 pkg install -y "${packages[@]}"

@@ -4,13 +4,15 @@ vim.opt.backspace = "indent,eol,start"
 -- Menampilkan nomor baris
 vim.opt.number = true
 
+-- ruang untuk icon disebelah number
+vim.opt.signcolumn = "yes"
 -- Menampilkan nomor baris relatif
 vim.opt.relativenumber = true
 
 -- Ukuran tab 4 spasi
 vim.opt.tabstop = 3
 
--- Panjang indentasi otomatis 4 spasi
+-- Panjang indentasi otomatis (n) spasi
 vim.opt.shiftwidth = 3
 
 -- Gunakan spasi alih-alih tab
