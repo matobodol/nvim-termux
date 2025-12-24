@@ -1,7 +1,4 @@
-#!/bin/env sh
-
-#nvim termux
-#nvim termux
+#!/usr/bin/env bash
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cp -r "$SCRIPT_DIR"/.config "$HOME"
@@ -46,7 +43,6 @@ PKGS=(
   rust
   rust-analyzer
   lua-language-server
-  # bash-language-server
   shellcheck
 )
 
